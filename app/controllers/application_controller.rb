@@ -1,8 +1,9 @@
-require 'rails/application_controller'
-class StaticController < ApplicationController
-  layout false
+class ApplicationController < ActionController::API
+  include DeviseTokenAuth::Concerns::SetUserByToken
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def index
-    render file: Rails.root.join('public', 'index.html')
-  end
+  protected 
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, :registration, keys: [:first_name, :last_name])
+   end
 end
