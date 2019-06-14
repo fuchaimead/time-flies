@@ -1,0 +1,26 @@
+.nav {
+  padding: 20px 0 0 20px;
+  margin-top: 15px;
+}
+
+.flight-totals {
+  display: inline;
+  padding-right: 20px;
+}
+
+.background {
+  height: 100%;
+}
+
+a {
+  display: inherit;
+}
+
+h3 {
+  margin-top: 5px !important;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
