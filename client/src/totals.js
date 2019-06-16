@@ -1,6 +1,7 @@
 import FlightDetails from "./flightDetails";
 import React from "react";
 import { Header, Label, Segment } from "semantic-ui-react";
+import { isNil } from "lodash";
 
 class FlightTotals extends React.Component {
   state = { showDetails: false }
@@ -21,7 +22,8 @@ class FlightTotals extends React.Component {
     const details = this.state.showDetails ? "Hide Details" : "Show Details";
     if(this.props.flights.length < 1 || this.props.flights === undefined) { return(null); }
 
-    const totalHours = this.props.flights.map(flight => flight.total_duration).reduce((prev, next) => prev + next);
+    let totalHours = this.props.flights.map(flight => flight.total_duration).reduce((prev, next) => prev + next);
+    totalHours = isNil(totalHours) ? 0 : totalHours;
     return(
       <Segment>
         <Header as='h3' className="flight-totals">Total Duration of Flight</Header>

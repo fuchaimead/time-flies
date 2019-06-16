@@ -4,7 +4,7 @@ import React from "react";
 import Style from "./homepage.style";
 import ViewFlight from "./viewFlight";
 import { connect } from "react-redux";
-import { Button, Container, Grid, Header, Table } from "semantic-ui-react";
+import { Button, Container, Grid, Header, Pagination, Table } from "semantic-ui-react";
 import { isEmpty, isNil, sortBy } from "lodash";
 
 class Homepage extends React.Component {
@@ -13,15 +13,32 @@ class Homepage extends React.Component {
     direction: null,
     data: [], 
     viewFlight: false,
+    activePage: 1
   }
 
   componentDidMount() {
-    axios.get("/api/flights", {user_id: this.props.user.id})
+    axios.post("/api/flights/page", {page: 1})
       .then(res => {
         const {headers} = res;
         console.log(res)
         this.props.dispatch({ type: 'SET_HEADERS', headers });
-        this.setState({ data: res.data });
+        this.setState({ data: res.data.data });
+      })
+      .catch( err => {
+        console.log(err);
+        const {headers} = err;
+        this.props.dispatch({ type: 'SET_HEADERS', headers });
+    });
+  }
+
+  handlePageChange(e, activePage) {
+    this.setState({activePage: activePage.activePage})
+    axios.post("/api/flights/page", {page: activePage.activePage})
+      .then(res => {
+        const {headers} = res;
+        console.log(res)
+        this.props.dispatch({ type: 'SET_HEADERS', headers });
+        this.setState({ data: res.data.data });
       })
       .catch( err => {
         console.log(err);
@@ -39,9 +56,7 @@ class Homepage extends React.Component {
   }
 
   handleSort(clickedColumn) {
-    console.log(clickedColumn);
     const { column, data, direction } = this.state;
-    console.log(data)
     if(column !== clickedColumn) {
       this.setState({
         column: clickedColumn,
@@ -79,8 +94,7 @@ class Homepage extends React.Component {
   }
 
   renderFlights() {
-    console.log("this.state", this.state.data)
-    if(isNil(this.state.data) || isEmpty(this.state.data)) { return(null); }
+    if(isNil(this.state.data)) { return(null); }
     return(
       this.state.data.map(flight => {
         return(
@@ -130,6 +144,7 @@ class Homepage extends React.Component {
             </Grid.Row>
           </Grid>
           {this.renderTableData()}
+          <Pagination totalPages={3} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)}/>
         </Container>
       </Style>
     );

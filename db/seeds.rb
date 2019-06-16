@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+x = 0
+y = 10
+while x < y do
+  Flight.create({identification: 'something', solo_hours: 2, user_id: 1})
+  x += 1
+end

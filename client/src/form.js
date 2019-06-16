@@ -153,8 +153,8 @@ class FlightForm extends React.Component {
               <Form.Input label="No. Landings Night" placeholder="number" width={4} id="num_landings_night" value={num_landings_night} onChange={this.handleChange} type="number" min="0" step="1"/>
             </Form.Group>
             <Form.Group>
-              { this.state.value === "Airplane SEL" && <Form.Input fluid label="Airplane SEL" placeholder="Airplane SEL" id="airplane_sel" width={4} value={airplane_sel} onChange={this.handleChange} type="number" min="0" step="0.1"/>}
-              { this.state.value === "Airplane MEL" && <Form.Input fluid label="Airplane MEL" placeholder="Airplane MEL" id="airplane_mel" width={4} value={airplane_mel} onChange={this.handleChange} type="number" min="0" step="0.1"/>}
+              { this.state.value === "Airplane SEL" && <Form.Input fluid label="Airplane SEL" placeholder="hours" id="airplane_sel" width={4} value={airplane_sel} onChange={this.handleChange} type="number" min="0" step="0.1"/>}
+              { this.state.value === "Airplane MEL" && <Form.Input fluid label="Airplane MEL" placeholder="hours" id="airplane_mel" width={4} value={airplane_mel} onChange={this.handleChange} type="number" min="0" step="0.1"/>}
               <Form.Input label="Solo Flight" placeholder="hours" width={4} id="solo_hours" value={solo_hours} onChange={this.handleChange} type="number" min="0" step="0.1"/>
               <Form.Input label="Total Duration" placeholder="hours" width={4} id="total_duration" value={total_duration} onChange={this.handleChange} type="number" min="0" step="0.1"/>
             </Form.Group>

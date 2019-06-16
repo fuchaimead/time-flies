@@ -1,9 +1,15 @@
+require 'pry'
 class Api::FlightsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_flight, only: [:destroy, :show, :update]
 
   def index
     render json: current_user.flights
+  end
+  
+  def page
+    @flights = current_user.flights
+    render 'show'
   end
 
   def show
