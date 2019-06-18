@@ -5,7 +5,7 @@ import Style from "./homepage.style";
 import ViewFlight from "./viewFlight";
 import { connect } from "react-redux";
 import { Button, Container, Grid, Header, Pagination, Table } from "semantic-ui-react";
-import { isEmpty, isNil, sortBy } from "lodash";
+import { isNil, sortBy } from "lodash";
 
 class Homepage extends React.Component {
   state = {
@@ -22,7 +22,8 @@ class Homepage extends React.Component {
         const {headers} = res;
         console.log(res)
         this.props.dispatch({ type: 'SET_HEADERS', headers });
-        this.setState({ data: res.data.data });
+        console.log(res)
+        this.setState({ data: res.data.data, totalPages: res.data.count/res.data.per_page });
       })
       .catch( err => {
         console.log(err);
@@ -121,6 +122,7 @@ class Homepage extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     const{first_name, last_name} = this.props.user;
     if(isNil(this.state.data)) { return(null); }
 
@@ -144,7 +146,7 @@ class Homepage extends React.Component {
             </Grid.Row>
           </Grid>
           {this.renderTableData()}
-          <Pagination totalPages={3} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)}/>
+          <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>
         </Container>
       </Style>
     );
