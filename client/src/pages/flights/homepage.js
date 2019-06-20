@@ -4,23 +4,23 @@ import React from "react";
 import Style from "./homepage.style";
 import ViewFlight from "./viewFlight";
 import { connect } from "react-redux";
-import { Button, Container, Grid, Header, Pagination, Table } from "semantic-ui-react";
+import { Button, Container, Grid, Header, Pagination, Loader, Table } from "semantic-ui-react";
 import { isNil, sortBy } from "lodash";
 
 class Homepage extends React.Component {
   state = {
     column: null,
     direction: null,
-    data: [], 
+    data: null, 
     viewFlight: false,
-    activePage: 1
+    activePage: 1,
+    totalPages: 1
   }
 
   componentDidMount() {
     axios.post("/api/flights/page", {page: 1})
       .then(res => {
         const {headers} = res;
-        console.log(res)
         this.props.dispatch({ type: 'SET_HEADERS', headers });
         console.log(res)
         this.setState({ data: res.data.data, totalPages: res.data.count/res.data.per_page });
@@ -37,7 +37,6 @@ class Homepage extends React.Component {
     axios.post("/api/flights/page", {page: activePage.activePage})
       .then(res => {
         const {headers} = res;
-        console.log(res)
         this.props.dispatch({ type: 'SET_HEADERS', headers });
         this.setState({ data: res.data.data });
       })
@@ -122,34 +121,41 @@ class Homepage extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     const{first_name, last_name} = this.props.user;
-    if(isNil(this.state.data)) { return(null); }
-
-    return (
-      <Style>
-        <Container>
-          <Header as="h1" textAlign="center">Welcome {first_name} {last_name}</Header>
-          <Header as="h2" textAlign="center">Flight Log</Header>
-          <FlightTotals flights={this.state.data}/>
-          <Grid>
-            <Grid.Row>
+    if(isNil(this.state.data)) { 
+      return(
+        <Loader active content="Loading your flights"/>
+      ); 
+    } else {
+      return (
+        <Style>
+          <Container>
+            <Header as="h1" textAlign="center">Welcome {first_name} {last_name}</Header>
+            <Header as="h2" textAlign="center">Flight Log</Header>
+            <FlightTotals flights={this.state.data}/>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            <Grid columns={3}>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button onClick={() => this.handleAddFlight()}>Add Flight</Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            {this.renderTableData()}
+            <Grid centered columns={3}>
               <Grid.Column>
+                <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>
               </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          <Grid columns={3}>
-            <Grid.Row>
-              <Grid.Column>
-                <Button onClick={() => this.handleAddFlight()}>Add Flight</Button>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-          {this.renderTableData()}
-          <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>
-        </Container>
-      </Style>
-    );
+            </Grid>
+          </Container>
+        </Style>
+      );
+    }
   }
 }
 

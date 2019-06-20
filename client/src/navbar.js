@@ -24,12 +24,14 @@ class NavBar extends Component {
         <div className="nav-menu">
           <ul>
             <li>
-            <Link to='/'>
+            <Link to="/">
               View Flights
               </Link>
             </li>
             <li>
-              My Account
+              <Link to="/account">
+                My Account
+              </Link>
             </li>
             <li onClick={() => this.handleLogout()}>
               Logout

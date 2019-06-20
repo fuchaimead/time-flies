@@ -93,7 +93,9 @@ class FlightForm extends React.Component {
 
   renderContent() {
     const { actual_instrument, airplane_mel, airplane_sel, arrival, cross_country_hours, day_hours, departure, dual_received, identification, 
-      maneuvers, model, night_hours, num_instrument_approaches, num_landings_day, num_landings_night, pic_hours, simulated_instrument, solo_hours, total_duration } = this.state.flight; 
+      maneuvers, model, night_hours, num_instrument_approaches, num_landings_day, num_landings_night, pic_hours, simulated_instrument, solo_hours } = this.state.flight;
+
+    const total_duration = parseInt(day_hours, 10) + parseInt(night_hours, 10);
     
     if(this.state.value === "AATD") { return(null); }
     
@@ -246,8 +248,8 @@ class FlightForm extends React.Component {
               </Form.Group>
             </Grid.Column>
           </Grid>
-            {this.renderTrainerContent()}
-            {this.renderContent()}
+          {this.renderTrainerContent()}
+          {this.renderContent()}
         </Form>
         </Container>
       </Style>
