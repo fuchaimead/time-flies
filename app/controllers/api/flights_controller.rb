@@ -1,4 +1,3 @@
-require 'pry'
 class Api::FlightsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_flight, only: [:destroy, :show, :update]
