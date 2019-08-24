@@ -24,7 +24,7 @@ export const handleLogout = (history) => {
         history.push('/login');
       })
       .catch( res => {
-        console.log(res);
+        console.error(res);
       });
     }
 }
@@ -37,7 +37,7 @@ export const handleLogin = (email, password, history) => {
         history.push('/');
       })
       .catch( res => {
-        console.log(res);
+        console.error(res);
       })
   }
 }
