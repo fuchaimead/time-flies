@@ -11,7 +11,6 @@ const Style = Styled('div')`
   }
 
   .ui.container.grid {
-    width: 550px !important;
     background-color: rgba(256, 256, 256, 0.5);
     margin-top: 150px;
 
@@ -22,6 +21,23 @@ const Style = Styled('div')`
 
   .ui.grid {
     padding: 30px;
+  }
+
+  .ui.basic.segment {
+    display: flex;
+    justify-content: center;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .ui.form {
+      width: 70%;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .ui.form {
+      width: 50s%;
+    }
   }
 `
 

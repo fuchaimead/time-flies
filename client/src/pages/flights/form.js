@@ -95,7 +95,7 @@ class FlightForm extends React.Component {
     const { actual_instrument, airplane_mel, airplane_sel, arrival, cross_country_hours, day_hours, departure, dual_received, identification, 
       maneuvers, model, night_hours, num_instrument_approaches, num_landings_day, num_landings_night, pic_hours, simulated_instrument, solo_hours } = this.state.flight;
 
-    const total_duration = parseInt(day_hours, 10) + parseInt(night_hours, 10);
+    const total_duration = parseInt(day_hours, 10) + parseInt(night_hours, 10) || "";
     
     if(this.state.value === "AATD") { return(null); }
     
@@ -162,7 +162,7 @@ class FlightForm extends React.Component {
             </Form.Group>
           </Grid.Column>
         </Grid>
-        <Form.TextArea label="Procedures and maneuvers" width={8} id="maneuvers" value={maneuvers} onChange={this.handleChange}/>
+        <Form.TextArea label="Procedures and Maneuvers" width={8} id="maneuvers" value={maneuvers} onChange={this.handleChange}/>
         <Grid columns={2}>
           <Grid.Column></Grid.Column>
           <Grid.Column className="align-left">

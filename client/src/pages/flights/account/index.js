@@ -1,6 +1,6 @@
 import Field from "./field";
 import React, { Component } from 'react';
-import { Button, Container, Grid, Form, Header, Segment } from 'semantic-ui-react';
+import { Button, Grid, Form, Header, Segment } from 'semantic-ui-react';
 import { handleRegister} from '../../../actions/auth';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
@@ -31,8 +31,6 @@ class Account extends Component {
     const { name, value } = e.target;
     this.setState({ [name]: value });
   }
-
-
 
   toggleField(name) {
     this.setState({showField: true, activeField: name});

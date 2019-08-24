@@ -28,11 +28,12 @@ class NavBar extends Component {
               View Flights
               </Link>
             </li>
-            <li>
+            {/* uncomment after account set up is done
+             <li>
               <Link to="/account">
                 My Account
               </Link>
-            </li>
+            </li> */}
             <li onClick={() => this.handleLogout()}>
               Logout
             </li>
