@@ -1,7 +1,7 @@
 {
   "name": "flight-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "axios": "^0.18.0",
     "babel-plugin-emotion": "^9.2.11",
