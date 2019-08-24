@@ -53,7 +53,7 @@ class ViewFlight extends React.Component {
           <Modal.Content>
             <Style>
               <Header as="h3">Date: {formattedDate}</Header>
-              <p>Description {comments}</p>
+              <p><strong>Description</strong>{comments}</p>
               <p>Aircraft Make & Model {model}</p>
               <p>Aircraft Identification {identification}</p>
               <p>Total Hours {total_duration}</p>
