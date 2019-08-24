@@ -4,8 +4,8 @@ import React from "react";
 import Style from "./homepage.style";
 import ViewFlight from "./viewFlight";
 import { connect } from "react-redux";
-import { Button, Container, Grid, Header, Pagination, Loader, Table } from "semantic-ui-react";
-import { isNil, sortBy } from "lodash";
+import { Button, Container, Grid, Header, Pagination, Loader, Table, TableRow } from "semantic-ui-react";
+import { isEmpty, isNil, sortBy } from "lodash";
 
 class Homepage extends React.Component {
   state = {
@@ -94,7 +94,7 @@ class Homepage extends React.Component {
   }
 
   renderFlights() {
-    if(isNil(this.state.data)) { return(null); }
+    if(isEmpty(this.state.data)) { return(<TableRow><Table.Cell>You have no flights logged</Table.Cell></TableRow>); }
     return(
       this.state.data.map(flight => {
         return(
@@ -126,7 +126,8 @@ class Homepage extends React.Component {
       return(
         <Loader active content="Loading your flights"/>
       ); 
-    } else {
+
+    }  else {
       return (
         <Style>
           <Container>
@@ -147,11 +148,11 @@ class Homepage extends React.Component {
               </Grid.Row>
             </Grid>
             {this.renderTableData()}
-            <Grid centered columns={3}>
+            {!isEmpty(this.state.data) && <Grid centered columns={3}>
               <Grid.Column>
                 <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>
               </Grid.Column>
-            </Grid>
+            </Grid>}
           </Container>
         </Style>
       );
