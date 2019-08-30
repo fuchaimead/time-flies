@@ -2,7 +2,7 @@
 import Styled from "react-emotion";
 
 const Style = Styled('div')`
-  padding-top: 30px;
+  padding-top: 100px;
 
   p {
     margin: 0;
