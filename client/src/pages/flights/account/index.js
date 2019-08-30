@@ -2,6 +2,7 @@ import Axios from "axios";
 import Field from "./field";
 import React, { Component } from 'react';
 import { Button, Grid, Form, Header, Segment } from 'semantic-ui-react';
+// import { handleRegister} from '../../../actions/auth';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
 import Style from "./account.style";

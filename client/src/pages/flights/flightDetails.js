@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header, Table } from "semantic-ui-react";
+import Style from "./flightDetails.style";
 
 class FlightDetails extends React.Component {
   calculateHours(key) {
@@ -24,196 +24,162 @@ class FlightDetails extends React.Component {
 
   render() {
     return(
-      <Grid columns={4}>
-        <Grid.Column>
-          <Table basic='very' celled collapsing>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Aircraft Category</Table.HeaderCell>
-                <Table.HeaderCell>Hours</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Airplane SEL
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("airplane_sel")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Airplane MEL
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("airplane_mel")}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Grid.Column>
-        <Grid.Column>
-          <Table basic='very' celled collapsing>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Type of Piloting Time</Table.HeaderCell>
-                <Table.HeaderCell>Hours</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Dual Received
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("dual_received")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Pilot-in-Command
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("pic_hours")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Ground Trainer
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("ground_trainer")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Solo Flight
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("solo_hours")}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Grid.Column>
-        <Grid.Column>
-          <Table basic='very' celled collapsing>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Conditions of Flight</Table.HeaderCell>
-                <Table.HeaderCell>Hours</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Day
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("day_hours")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Night
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("night_hours")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Cross-Country
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("cross_country_hours")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Actual Instrument
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("actual_instrument")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Simulated Instrument
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("simulated_instrument")}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Grid.Column>
-        <Grid.Column>
-          <Table basic='very' celled collapsing>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Extra</Table.HeaderCell>
-                <Table.HeaderCell>Number</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Instrument Approaches
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("num_instrument_approaches")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Day Landings
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("num_landings_day")}</Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h5'>
-                    <Header.Content>
-                      Night Landings
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>{this.calculateHours("num_landings_night")}</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          </Table>
-        </Grid.Column>
-      </Grid>
+      <Style>
+        <div className="flight-details">
+          <div className="section">
+            <div className="row">
+              <div className="label">
+                Aircraft Category
+              </div>
+              <div className="total">
+                Hours
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Airplane SEL
+              </div>
+              <div>
+                {this.calculateHours("airplane_sel")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Airplane MEL
+              </div>
+              <div>
+              {this.calculateHours("airplane_mel")}
+              </div>
+            </div>
+          </div>
+          <div className="section">
+            <div className="row">
+              <div className="label">
+                Type of Piloting Time
+              </div>
+              <div className="total">
+                Hours
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Dual Received
+              </div>
+              <div>
+                {this.calculateHours("dual_received")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Pilot-in-Command
+              </div>
+              <div>
+              {this.calculateHours("pic_hours")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Ground Trainer
+              </div>
+              <div>
+              {this.calculateHours("ground_trainer")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Solo Flight
+              </div>
+              <div>
+              {this.calculateHours("solo_hours")}
+              </div>
+            </div>
+          </div>
+          <div className="section">
+            <div className="row">
+              <div className="label">
+                Conditions of Flight
+              </div>
+              <div className="total">
+                Hours
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Day
+              </div>
+              <div>
+                {this.calculateHours("day_hours")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Night
+              </div>
+              <div>
+              {this.calculateHours("night_hours")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Cross-Country
+              </div>
+              <div>
+              {this.calculateHours("cross_country_hours")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Actual Instrument
+              </div>
+              <div>
+              {this.calculateHours("actual_instrument")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Simulated Instrument
+              </div>
+              <div>
+              {this.calculateHours("simulated_instrument")}
+              </div>
+            </div>
+          </div>
+          <div className="section">
+            <div className="row">
+              <div className="label">
+                Extra
+              </div>
+              <div className="total">
+                Number
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Instrument Approaches
+              </div>
+              <div>
+                {this.calculateHours("num_instrument_approaches")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Day Landings
+              </div>
+              <div>
+              {this.calculateHours("num_landings_day")}
+              </div>
+            </div>
+            <div className="row">
+              <div className="label">
+                Night Landings
+              </div>
+              <div>
+              {this.calculateHours("num_landings_night")}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Style>
     );
   }
 }
