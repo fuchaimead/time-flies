@@ -160,7 +160,7 @@ class FlightForm extends React.Component {
             </Form.Group>
           </Grid.Column>
         </Grid>
-        <Form.TextArea label="Procedures and maneuvers" width={8} id="maneuvers" value={maneuvers} onChange={this.handleChange}/>
+        <Form.TextArea label="Procedures and Maneuvers" width={8} id="maneuvers" value={maneuvers} onChange={this.handleChange}/>
         <Grid columns={2}>
           <Grid.Column></Grid.Column>
           <Grid.Column className="align-left">
