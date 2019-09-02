@@ -10,33 +10,31 @@ const Style = Styled('div')`
     background-size: cover;
   }
 
-  .ui.container.grid {
+  .login-container {
     background-color: rgba(256, 256, 256, 0.5);
-    margin-top: 150px;
-
-    i {
-      margin-top: 14px;
-    }
-  }
-
-  .ui.grid {
     padding: 30px;
   }
 
-  .ui.basic.segment {
+  .center {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
     justify-content: center;
   }
 
-  @media only screen and (min-width: 768px) {
-    .ui.form {
-      width: 70%;
-    }
+  .ui.center.aligned.header {
+    margin: 0;
   }
 
-  @media only screen and (min-width: 1024px) {
-    .ui.form {
-      width: 50s%;
+  @media only screen and (min-width: 768px) {
+    .login-container {
+      width: 40%;
     }
   }
 `

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, Form, Segment, Header, Icon } from 'semantic-ui-react';
+import { Button, Form, Segment, Header, Icon } from 'semantic-ui-react';
 import { handleRegister} from '../actions/auth';
 import { connect } from 'react-redux';
 import { css } from 'emotion';
@@ -29,78 +29,70 @@ class Register extends Component {
 
     return(
       <Style className="background-image">
-        <Segment basic>
-          <Form onSubmit={this.handleSubmit}>
-            <Grid container>
-            <Icon name='paper plane' size='huge' />
-            <Header as='h1' textAlign='center'>Sign up for TimeFlies</Header>
-              <Grid.Row columns={2}>
-                <Grid.Column>
-                    <Form.Field>
-                      <label>First Name</label>
-                      <input
-                        required
-                        autoFocus
-                        name='first_name'
-                        value={first_name}
-                        onChange={this.handleChange}
-                      />
-                    </Form.Field>
-                  </Grid.Column>
-                <Grid.Column>
-                    <Form.Field>
-                      <label>Last Name</label>
-                      <input
-                        required
-                        name='last_name'
-                        value={last_name}
-                        onChange={this.handleChange}
-                      />
-                    </Form.Field>
-                  </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column>
-                    <Form.Field>
-                      <label>Email</label>
-                      <input
-                        required
-                        name='email'
-                        value={email}
-                        onChange={this.handleChange}
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Password</label>
-                      <input
-                        required
-                        name='password'
-                        value={password}
-                        type='password'
-                        onChange={this.handleChange}
-                      />
-                    </Form.Field>
-                    <Form.Field>
-                      <label>Password Confirmation</label>
-                      <input
-                        required
-                        name='passwordConfirmation'
-                        value={passwordConfirmation}
-                        type='password'
-                        onChange={this.handleChange}
-                      />
-                    </Form.Field>
-                    <Segment textAlign='center' basic>
-                      <Button primary type='submit'>Sign Up</Button>
-                    </Segment>
-                    <div className={css`text-align: center; background: white;`}>
-                  <strong>Already have an account? <Link to="/login">Sign In</Link></strong>
-                </div>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Form>
-        </Segment>
+        <div className="center">
+          <div className="login-container">
+            <Form onSubmit={this.handleSubmit}>
+              <div className="row">
+                <Icon name='paper plane' size='big' />
+                <Header as='h1' textAlign='center'>Sign up for TimeFlies</Header>
+              </div>
+                <Form.Field>
+                  <label>First Name</label>
+                  <input
+                    required
+                    autoFocus
+                    name='first_name'
+                    value={first_name}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Last Name</label>
+                  <input
+                    required
+                    name='last_name'
+                    value={last_name}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Email</label>
+                  <input
+                    required
+                    name='email'
+                    value={email}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Password</label>
+                  <input
+                    required
+                    name='password'
+                    value={password}
+                    type='password'
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Password Confirmation</label>
+                  <input
+                    required
+                    name='passwordConfirmation'
+                    value={passwordConfirmation}
+                    type='password'
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Segment textAlign='center' basic>
+                  <Button primary type='submit'>Sign Up</Button>
+                </Segment>
+              <div className={css`text-align: center; background: white;`}>
+                <strong>Already have an account? <Link to="/login">Sign In</Link></strong>
+              </div>
+            </Form>
+          </div>
+        </div>
       </Style>
     );
   }

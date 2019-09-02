@@ -1,3 +1,4 @@
+require 'pry'
 class Api::FlightsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_flight, only: [:destroy, :show, :update]
@@ -21,6 +22,20 @@ class Api::FlightsController < ApplicationController
     end
   end
 
+  def calculate
+    @flights = current_user.flights
+    time1 = params['time1']
+    time2 = params['time2']
+    array = []
+    for i in @flights do
+      if i[time1] == i[time2]
+        array.push(i[time1])
+      end
+    end
+    total = array.compact.reduce(0, :+)
+    render json: total
+  end 
+
   def update
     if @flight.update(flight_params)      
       render json: @flight
@@ -34,6 +49,7 @@ class Api::FlightsController < ApplicationController
   end
 
   private
+
   def set_flight 
     @flight = Flight.find(params[:id])
   end

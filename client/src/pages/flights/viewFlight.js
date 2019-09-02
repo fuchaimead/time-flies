@@ -22,6 +22,8 @@ class ViewFlight extends React.Component {
       .then(res => {
         this.props.deleteFlight(id);
         // flash message
+        const {headers} = res;
+        this.props.dispatch({ type: 'SET_HEADERS', headers });
       })
       .catch( err => {
         console.log(err);
@@ -53,10 +55,10 @@ class ViewFlight extends React.Component {
           <Modal.Content>
             <Style>
               <Header as="h3">Date: {formattedDate}</Header>
-              <p><strong>Description</strong>{comments}</p>
-              <p>Aircraft Make & Model {model}</p>
-              <p>Aircraft Identification {identification}</p>
-              <p>Total Hours {total_duration}</p>
+              <p><strong>Description</strong> {comments}</p>
+              <p><strong>Aircraft Make & Model</strong> {model}</p>
+              <p><strong>Aircraft Identification</strong> {identification}</p>
+              <p><strong>Total Hours</strong> {total_duration}</p>
               {this.viewFlight()}
               <Grid columns={2}>
                 <Grid.Column></Grid.Column>

@@ -4,8 +4,8 @@ import React from "react";
 import Style from "./homepage.style";
 import ViewFlight from "./viewFlight";
 import { connect } from "react-redux";
-import { Button, Container, Grid, Header, Pagination, Loader, Table, TableRow } from "semantic-ui-react";
-import { isEmpty, isNil, sortBy } from "lodash";
+import { Button, Container, Grid, Header, Pagination, Loader, Table } from "semantic-ui-react";
+import { isNil, sortBy } from "lodash";
 
 class Homepage extends React.Component {
   state = {
@@ -22,7 +22,6 @@ class Homepage extends React.Component {
       .then(res => {
         const {headers} = res;
         this.props.dispatch({ type: 'SET_HEADERS', headers });
-        console.log(res)
         this.setState({ data: res.data.data, totalPages: res.data.count/res.data.per_page });
       })
       .catch( err => {
@@ -167,8 +166,7 @@ class Homepage extends React.Component {
     if(isNil(this.state.data)) { 
       return(
         <Loader active content="Loading your flights"/>
-      ); 
-
+      );
     }  else {
       return (
         <Style>
@@ -182,7 +180,7 @@ class Homepage extends React.Component {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-            <Grid columns={3}>
+            <Grid columns={2}>
               <Grid.Row>
                 <Grid.Column>
                   <Button onClick={() => this.handleAddFlight()}>Add Flight</Button>
@@ -192,9 +190,9 @@ class Homepage extends React.Component {
             {this.renderTableData()}
             <Grid centered>
               <Grid.Column>
-                <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>
+                {this.state.data.length >= 10 && <Pagination totalPages={this.state.totalPages} activePage={this.state.activePage} onPageChange={(e, activePage) => this.handlePageChange(e, activePage)} ellipsisItem={null}/>}
               </Grid.Column>
-            </Grid>}
+            </Grid>
           </Container>
         </Style>
       );
