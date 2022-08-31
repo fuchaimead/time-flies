@@ -11,7 +11,7 @@ gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'devise_token_auth'
 gem 'jbuilder', '~> 2.5'
-gem 'omniauth', '~> 1.8.1'
+gem 'omniauth', '~> 1.9.2'
 
 gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
